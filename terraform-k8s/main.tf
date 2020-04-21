@@ -1,0 +1,3 @@
+module "crd" {
+  source = "./crd"
+}
