@@ -1,7 +1,9 @@
 
-provider "kubernetes-alpha" {}
+provider "kubernetes-alpha" {
+  server_side_planning = "true"
+}
 
-resource "kubernetes_manifest_hcl" "workspaces_app_terraform_io_crd" {
+resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
   provider = kubernetes-alpha
 
   manifest = {
