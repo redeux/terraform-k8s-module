@@ -8,16 +8,16 @@ resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
 
   manifest = {
     "apiVersion" = "apiextensions.k8s.io/v1beta1"
-    "kind"       = "CustomResourceDefinition"
+    "kind" = "CustomResourceDefinition"
     "metadata" = {
       "name" = "workspaces.app.terraform.io"
     }
     "spec" = {
       "group" = "app.terraform.io"
       "names" = {
-        "kind"     = "Workspace"
+        "kind" = "Workspace"
         "listKind" = "WorkspaceList"
-        "plural"   = "workspaces"
+        "plural" = "workspaces"
         "singular" = "workspace"
       }
       "scope" = "Namespaced"
@@ -29,12 +29,12 @@ resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
           "description" = "Workspace is the Schema for the workspaces API"
           "properties" = {
             "apiVersion" = {
-              "description" = "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
-              "type"        = "string"
+              "description" = "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources"
+              "type" = "string"
             }
             "kind" = {
-              "description" = "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-              "type"        = "string"
+              "description" = "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+              "type" = "string"
             }
             "metadata" = {
               "type" = "object"
@@ -47,11 +47,11 @@ resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
                   "properties" = {
                     "source" = {
                       "description" = "Any remote module source (version control, registry)"
-                      "type"        = "string"
+                      "type" = "string"
                     }
                     "version" = {
                       "description" = "Module version for registry modules"
-                      "type"        = "string"
+                      "type" = "string"
                     }
                   }
                   "required" = [
@@ -61,7 +61,7 @@ resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
                 }
                 "organization" = {
                   "description" = "Terraform Cloud organization"
-                  "type"        = "string"
+                  "type" = "string"
                 }
                 "outputs" = {
                   "description" = "Outputs denote outputs wanted"
@@ -70,11 +70,11 @@ resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
                     "properties" = {
                       "key" = {
                         "description" = "Output name"
-                        "type"        = "string"
+                        "type" = "string"
                       }
                       "moduleOutputName" = {
                         "description" = "Attribute name in module"
-                        "type"        = "string"
+                        "type" = "string"
                       }
                     }
                     "type" = "object"
@@ -83,7 +83,7 @@ resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
                 }
                 "secretsMountPath" = {
                   "description" = "File path within operator pod to load workspace secrets"
-                  "type"        = "string"
+                  "type" = "string"
                 }
                 "variables" = {
                   "description" = "Variables as inputs to module"
@@ -92,19 +92,23 @@ resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
                     "properties" = {
                       "environmentVariable" = {
                         "description" = "EnvironmentVariable denotes if this variable should be created as environment variable"
-                        "type"        = "boolean"
+                        "type" = "boolean"
+                      }
+                      "hcl" = {
+                        "description" = "String input should be an HCL-formatted variable"
+                        "type" = "boolean"
                       }
                       "key" = {
                         "description" = "Variable name"
-                        "type"        = "string"
+                        "type" = "string"
                       }
                       "sensitive" = {
                         "description" = "Variable is a secret and should be retrieved from file"
-                        "type"        = "boolean"
+                        "type" = "boolean"
                       }
                       "value" = {
                         "description" = "Variable value"
-                        "type"        = "string"
+                        "type" = "string"
                       }
                       "valueFrom" = {
                         "description" = "Source for the variable's value. Cannot be used if value is not empty."
@@ -114,15 +118,15 @@ resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
                             "properties" = {
                               "key" = {
                                 "description" = "The key to select."
-                                "type"        = "string"
+                                "type" = "string"
                               }
                               "name" = {
                                 "description" = "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?"
-                                "type"        = "string"
+                                "type" = "string"
                               }
                               "optional" = {
-                                "description" = "Specify whether the ConfigMap or it's key must be defined"
-                                "type"        = "boolean"
+                                "description" = "Specify whether the ConfigMap or its key must be defined"
+                                "type" = "boolean"
                               }
                             }
                             "required" = [
@@ -135,11 +139,11 @@ resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
                             "properties" = {
                               "apiVersion" = {
                                 "description" = "Version of the schema the FieldPath is written in terms of, defaults to \"v1\"."
-                                "type"        = "string"
+                                "type" = "string"
                               }
                               "fieldPath" = {
                                 "description" = "Path of the field to select in the specified API version."
-                                "type"        = "string"
+                                "type" = "string"
                               }
                             }
                             "required" = [
@@ -152,15 +156,15 @@ resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
                             "properties" = {
                               "containerName" = {
                                 "description" = "Container name: required for volumes, optional for env vars"
-                                "type"        = "string"
+                                "type" = "string"
                               }
                               "divisor" = {
                                 "description" = "Specifies the output format of the exposed resources, defaults to \"1\""
-                                "type"        = "string"
+                                "type" = "string"
                               }
                               "resource" = {
                                 "description" = "Required: resource to select"
-                                "type"        = "string"
+                                "type" = "string"
                               }
                             }
                             "required" = [
@@ -173,15 +177,15 @@ resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
                             "properties" = {
                               "key" = {
                                 "description" = "The key of the secret to select from.  Must be a valid secret key."
-                                "type"        = "string"
+                                "type" = "string"
                               }
                               "name" = {
                                 "description" = "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?"
-                                "type"        = "string"
+                                "type" = "string"
                               }
                               "optional" = {
-                                "description" = "Specify whether the Secret or it's key must be defined"
-                                "type"        = "boolean"
+                                "description" = "Specify whether the Secret or its key must be defined"
+                                "type" = "boolean"
                               }
                             }
                             "required" = [
@@ -220,11 +224,11 @@ resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
                     "properties" = {
                       "key" = {
                         "description" = "Attribute name in module"
-                        "type"        = "string"
+                        "type" = "string"
                       }
                       "value" = {
                         "description" = "Value"
-                        "type"        = "string"
+                        "type" = "string"
                       }
                     }
                     "type" = "object"
@@ -233,15 +237,15 @@ resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
                 }
                 "runID" = {
                   "description" = "Run ID"
-                  "type"        = "string"
+                  "type" = "string"
                 }
                 "runStatus" = {
                   "description" = "Run Status gets the run status"
-                  "type"        = "string"
+                  "type" = "string"
                 }
                 "workspaceID" = {
                   "description" = "Workspace ID"
-                  "type"        = "string"
+                  "type" = "string"
                 }
               }
               "required" = [
@@ -258,8 +262,8 @@ resource "kubernetes_manifest" "workspaces_app_terraform_io_crd" {
       "version" = "v1alpha1"
       "versions" = [
         {
-          "name"    = "v1alpha1"
-          "served"  = true
+          "name" = "v1alpha1"
+          "served" = true
           "storage" = true
         },
       ]
